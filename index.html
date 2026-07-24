@@ -221,18 +221,7 @@
       <div class="card"><h2>Debt</h2><p class="note">Enter balances as positive numbers &mdash; they're subtracted automatically.</p><div class="scroll"><table class="tbl" id="debtTable"></table></div><button class="add" onclick="addDebt()">+ Add debt</button></div>
     </div>
 
-    <div class="card">
-      <h2>Career timeline</h2>
-      <p class="note">Stages of your working life &mdash; e.g. rest of military career, then second career. Check "Retire" on the stage where contributions stop for good; the model derives your full-retirement age and year (contribution amounts live on each account above).</p>
-      <div class="grid3">
-        <div class="field"><label>You retire at <span class="derived">computed</span></label><input class="inp" id="d_retireAt" disabled></div>
-        <div class="field"><label>Spouse's age that year <span class="derived">computed</span></label><input class="inp" id="d_spouseAt" disabled></div>
-      </div>
-      <div class="scroll"><table class="tbl" id="ladderTable"></table></div>
-      <button class="add" onclick="addSeg()">+ Add stage</button>
-      <div class="warn" id="ladderWarn"></div>
-      <div class="chartbox tall" style="margin-top:16px"><canvas id="ladderChart"></canvas></div>
-    </div>
+   
 
     <div class="card">
       <h2>Income streams</h2>
@@ -252,6 +241,18 @@
 
   <!-- 3. RETIREMENT (future) -->
   <div class="panel" data-panel="retire">
+     <div class="card">
+      <h2>Career timeline</h2>
+      <p class="note">Stages of your working life &mdash; e.g. rest of military career, then second career. Check "Retire" on the stage where contributions stop for good; the model derives your full-retirement age and year (contribution amounts live on each account above).</p>
+      <div class="grid3">
+        <div class="field"><label>You retire at <span class="derived">computed</span></label><input class="inp" id="d_retireAt" disabled></div>
+        <div class="field"><label>Spouse's age that year <span class="derived">computed</span></label><input class="inp" id="d_spouseAt" disabled></div>
+      </div>
+      <div class="scroll"><table class="tbl" id="ladderTable"></table></div>
+      <button class="add" onclick="addSeg()">+ Add stage</button>
+      <div class="warn" id="ladderWarn"></div>
+      <div class="chartbox tall" style="margin-top:16px"><canvas id="ladderChart"></canvas></div>
+    </div>
     <div class="card">
       <h2>Drawdown model</h2>
       <p class="note">Your nest egg keeps compounding while you withdraw a fixed percentage yearly. Your military pension and VA pay have been flowing since your 20-year mark and continue for life; each person's Social Security switches on at their own claim age.</p>
