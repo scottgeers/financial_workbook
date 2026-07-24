@@ -962,7 +962,7 @@ function updateBase(){
     if(ri>-1 && ri<c.stages.length-1) ladderMsg='Stages after the Retire stage are hypothetical "if untouched" growth only   they don\'t feed the nest egg or the plan. Actual post-retirement drawdown happens on the Retirement tab.';
   }
   setWarn('ladderWarn', ladderMsg);
-  drawBar('ladderChart',state.base.accounts.map(a=>a.type||a.owner),c.acctProj,state.base.accounts.map(a=>a.purpose==='Retirement'?'#123b2e':'#9DB8AB'),v=>moneyK(v));
+  drawBar('ladderChart',state.base.accounts.map(a=>a.type||a.owner),c.acctProj,state.base.accounts.map(a=>a.purpose==='Retirement'?'#3B6EA5':'#9DB8AB'),v=>moneyK(v));
 }
 
 /* ============ Retirement ============ */
