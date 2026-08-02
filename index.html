@@ -9,12 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#123b2e; --ink2:#1c5843;
-    --paper:#FBFAF7; --card:#ffffff; --line:#E7E4DC; --line2:#f0eee8;
-    --muted:#8A8578; --text:#2A2A26;
-    --save:#1D9E75; --need:#3B6EA5; --want:#C98A3B; --debt:#C25B4E; --unc:#B2AEA2;
-    --warn-bg:#fbf6ee; --warn-line:#ecdcc0; --warn-text:#6b5a3c;
+    /* Service Green theme */
+    --ink:#102A20; --ink2:#1B5E3A;
+    --paper:#F6F7F5; --card:#FFFFFF; --line:#E6EAE6; --line2:#F0F3F0;
+    --muted:#7D837A; --text:#222622;
+    --save:#2E8B57; --need:#3B6EA5; --want:#B07A3E; --debt:#A93F3A; --unc:#BDB7AA;
+    --warn-bg:#FBF8F2; --warn-line:#E9E0C8; --warn-text:#6B5A3C;
     --r:14px;
+  }
+  body.dark{
+    --ink:#F4F7F2; --ink2:#7AD39D;
+    --paper:#0E1210; --card:#151B17; --line:#2A342E; --line2:#1D241F;
+    --muted:#95A09A; --text:#E9EFEA;
+    --save:#61C98D; --need:#77AEE0; --want:#D7A96A; --debt:#E27C77; --unc:#C8B28A;
+    --warn-bg:#2A241D; --warn-line:#5A4A2A; --warn-text:#E6D7A8;
   }
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -29,7 +37,7 @@
   .brand input:focus{outline:none;border-bottom:1px solid var(--line)}
   .brand .sub{font-size:11px;color:var(--muted)}
   .hbtns{display:flex;gap:8px}
-  .btn{font:inherit;font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--text);cursor:pointer;transition:.15s}
+  .btn{font:inherit;font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.15s}
   .btn:hover{border-color:var(--ink);color:var(--ink)}
   .btn.ghost{color:var(--muted)}
   .kpis{max-width:1120px;margin:0 auto;padding:0 20px 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
@@ -47,7 +55,7 @@
   .tab.on{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}
   .tab.on .dot{background:var(--ink)}
   .tab .stepnum{font-size:10px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center}
-  .tab.on .stepnum{color:#fff;background:var(--ink);border-color:var(--ink)}
+  .tab.on .stepnum{color:var(--card);background:var(--ink);border-color:var(--ink)}
   .tabsep{margin-left:auto;display:flex;align-items:center;gap:2px;padding-left:14px;border-left:1px solid var(--line)}
   .tabsep .seplabel{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding-right:6px}
 
@@ -66,9 +74,9 @@
   .field{margin-bottom:14px}
   .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:500}
   .field .inp,.cell input,.cell select{font-family:'IBM Plex Mono',monospace;font-size:13.5px}
-  input.inp,select.inp{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;font:inherit;color:var(--text)}
+  input.inp,select.inp{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);font:inherit;color:var(--text)}
   input.inp:focus,select.inp:focus{outline:none;border-color:var(--ink)}
-  input.inp[disabled]{background:#f7f6f2;color:var(--ink);font-weight:600;border-style:dashed}
+  input.inp[disabled]{background:var(--line2);color:var(--ink);font-weight:600;border-style:dashed}
   .slabel{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
   .slabel b{color:var(--ink);font-weight:600;font-family:'IBM Plex Mono',monospace}
   input[type=range]{width:100%;accent-color:var(--ink);cursor:pointer}
@@ -85,11 +93,11 @@
   .cell input,.cell select{width:100%;border:1px solid transparent;background:transparent;padding:5px 6px;border-radius:6px;font:inherit;color:var(--text)}
   .cell.num input{font-family:'IBM Plex Mono',monospace;text-align:right;font-variant-numeric:tabular-nums}
   .cell input:hover,.cell select:hover{border-color:var(--line)}
-  .cell input:focus,.cell select:focus{outline:none;border-color:var(--ink);background:#fff}
+  .cell input:focus,.cell select:focus{outline:none;border-color:var(--ink);background:var(--card)}
   .del{border:none;background:none;color:var(--line);cursor:pointer;font-size:16px;line-height:1;padding:2px 6px;border-radius:6px}
-  .del:hover{color:var(--debt);background:#faf0ee}
+  .del:hover{color:var(--debt);background:var(--warn-bg)}
   .add{margin-top:10px;font-size:12.5px;color:var(--ink);background:none;border:1px dashed var(--line);border-radius:9px;padding:7px 12px;cursor:pointer;font-weight:500}
-  .add:hover{border-color:var(--ink);background:#f6f8f6}
+  .add:hover{border-color:var(--ink);background:var(--paper)}
 
   .allocbar{display:flex;height:26px;border-radius:8px;overflow:hidden;border:1px solid var(--line);margin-bottom:14px}
   .allocbar span{display:block;height:100%;transition:width .3s}
@@ -114,28 +122,28 @@
   .chartbox{position:relative;height:260px;width:100%}
   .chartbox.tall{height:320px}
   .hs-lock{position:sticky;top:var(--hs-stick,150px);z-index:6;background:var(--card)}
-  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;background:#f2f5f2;color:var(--ink2)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--line2);color:var(--ink2)}
   .derived{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:5px;padding:1px 6px;margin-left:6px}
   .warn{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--warn-text);margin-top:12px;display:none}
   .warn.show{display:block}
-  .retire-row td{background:#f4f8f5}
+  .retire-row td{background:var(--paper)}
   .toolbar{display:flex;align-items:center;gap:10px;margin:0 0 12px}
   .toolbar label{font-size:12px;color:var(--muted);font-weight:500}
   .toolbar select{padding:5px 8px}
   th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
   th.sortable:hover{color:var(--ink)}
   th.sortable .arr{font-size:9px;margin-left:3px;opacity:.85}
-  tr.grp td{background:#f5f4ef;font-weight:600;color:var(--ink);border-top:1px solid var(--line)}
+  tr.grp td{background:var(--paper);font-weight:600;color:var(--ink);border-top:1px solid var(--line)}
   tr.grp td .gname{font-size:12px;text-transform:uppercase;letter-spacing:.05em}
   .scroll{overflow-x:auto}
   .hs-stat{border-left:3px solid;padding-left:14px}
-  .hs-stat .k{font-size:12px;color:#BFD4C8;margin-bottom:4px}
-  .hs-stat .v{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:26px;color:#fff}
-  .hs-stat .sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7FA491;margin-top:4px}
+  .hs-stat .k{font-size:12px;color:var(--save);margin-bottom:4px}
+  .hs-stat .v{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:26px;color:var(--card)}
+  .hs-stat .sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink2);margin-top:4px}
   .hs-row{display:grid;grid-template-columns:46px 1fr 82px 22px;gap:8px;align-items:center;margin-bottom:6px}
   .hs-row.h{font-size:11px;color:var(--muted);margin-bottom:4px}
   .hs-row .age{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink)}
-  .hs-row input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;background:#fff}
+  .hs-row input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:13px;background:var(--card)}
   .hs-row input:disabled{background:var(--paper);opacity:.5}
   .hs-row input:focus{outline:none;border-color:var(--ink)}
   .hs-gridbox{max-height:300px;overflow-y:auto;padding-right:4px}
@@ -152,6 +160,7 @@
       </div>
     </div>
     <div class="hbtns">
+      <button class="btn" id="themeToggle" type="button" aria-pressed="false">🌙 Dark mode</button>
       <button class="btn" onclick="exportJSON()">Export</button>
       <button class="btn" onclick="document.getElementById('imp').click()">Import</button>
       <button class="btn ghost" onclick="resetAll()">Reset</button>
@@ -168,7 +177,7 @@
   <div class="panel" data-panel="budget">
     <div class="card">
       <h2>Monthly allocation</h2>
-      <p class="note">Where every dollar of this month's income is assigned. The gray band is uncommitted &mdash; income not yet given a job.</p>
+      <p class="note">How your monthly income is currently allocated. Be aware of large amounts of "uncommited" income, it tends to find a way to dissapear...</p>
       <div class="field" style="max-width:220px">
         <label>Household monthly income ($)</label>
         <input class="inp" type="number" id="b_income" oninput="onNum('budget.incomeMonthly',this.value,0,1e7)">
@@ -181,25 +190,20 @@
     </div>
     <div class="card">
       <h2>Line items</h2>
-      <p class="note">Enter each item as monthly dollars <em>or</em> percent of income   either column, they stay in sync, and entries are capped so you can never allocate more than you make. Link a Savings item to an account and that account's yearly contribution follows your budget automatically.</p>
+      <p class="note">Enter each item as monthly dollars <em>or</em> percent of income. Entries are capped so you can't allocate more than your monthly income.</p>
       <div class="toolbar"><label>Group by</label>
         <select class="inp" id="b_group" style="width:auto" onchange="setGroup('budgetGroup',this.value,buildBudgetRows)">
           <option value="none">None</option><option value="broad">Broad category</option><option value="tag">Type</option>
         </select>
         </div>
       <div class="scroll"><table class="tbl" id="budgetTable"></table></div>
-      <button class="add" onclick="addBudget()">+ Add line item</button>
+      <button class="add" onclick="addBudget()">+ Add budget item</button>
     </div>
   </div>
 
   <!-- 2. NET WORTH (today -> retirement handoff) -->
   <div class="panel" data-panel="base">
-    <div class="card">
-      <h2>Household</h2>
-      <p class="note">Ages entered here drive everything downstream: retirement year, Social Security timing for each of you, and the family timeline. This is the only place ages live.</p>
-      <div class="scroll"><table class="tbl" id="familyTable"></table></div>
-      <button class="add" onclick="addPerson()">+ Add family member</button>
-    </div>
+    
     <div class="grid3">
       <div class="card"><div class="eyebrow">Net worth</div><div class="big" id="nw_val">$0</div>
         <div class="rowbetween"><span class="k">Assets</span><span class="v" id="nw_assets"></span></div>
@@ -207,7 +211,7 @@
         <div class="rowbetween"><span class="k">Debt / assets</span><span class="v" id="nw_da"></span></div>
         <div class="rowbetween"><span class="k">Debt / net worth</span><span class="v" id="nw_dnw"></span></div>
       </div>
-      <div class="card" style="grid-column:span 2"><h2>Accounts</h2><p class="note">Each account grows at its own rate with its own yearly contributions and employer match   set contributions to zero to model "never add another dime." The "At retirement" column projects every account to your retirement year; <span class="pill">Retirement</span>-purpose accounts sum into your nest egg. Click headers to sort.</p>
+      <div class="card" style="grid-column:span 2"><h2>Accounts</h2><p class="note">Each account grows at its own rate with its own annual contributions ; <span class="pill">Retirement</span>-purpose accounts sum into your nest egg. Click headers to sort.</p>
         <div class="toolbar"><label>Group by</label>
           <select class="inp" id="a_group" style="width:auto" onchange="setGroup('acctGroup',this.value,buildAcct)">
             <option value="none">None</option><option value="owner">Owner</option><option value="purpose">Purpose</option>
@@ -217,11 +221,16 @@
       </div>
     </div>
     <div class="grid2">
-      <div class="card"><h2>Real estate</h2><p class="note">For rentals, enter what you pay on the mortgage and what you charge renters &mdash; net cash flow feeds the rental line in Income streams.</p><div class="scroll"><table class="tbl" id="reTable"></table></div><button class="add" onclick="addRE()">+ Add property</button><div class="rowbetween" style="margin-top:10px"><span class="k">Net rental cash flow</span><span class="v" id="re_net"></span></div></div>
-      <div class="card"><h2>Debt</h2><p class="note">Enter balances as positive numbers &mdash; they're subtracted automatically.</p><div class="scroll"><table class="tbl" id="debtTable"></table></div><button class="add" onclick="addDebt()">+ Add debt</button></div>
+      <div class="card" style="grid-column:span 2"><h2>Real estate</h2><p class="note">For rentals, enter what you pay on the mortgage and what you charge renters &mdash; rent collected is summed from the rent charged column.</p><div class="scroll"><table class="tbl" id="reTable"></table></div><button class="add" onclick="addRE()">+ Add property</button><div class="rowbetween" style="margin-top:10px"><span class="k">Gross Monthly Rent Collected</span><span class="v" id="re_net"></span></div><div class="rowbetween"><span class="k">Net Monthly Rent Collected</span><span class="v" id="re_net_copy"></span></div></div>
+      <div class="card" style="grid-column:span 2"><h2>Debt</h2><p class="note">Enter balances as positive numbers &mdash; they're subtracted automatically.</p><div class="scroll"><table class="tbl" id="debtTable"></table></div><button class="add" onclick="addDebt()">+ Add debt</button></div>
     </div>
 
-    <div class="card">
+    
+  </div>
+
+  <!-- 3. RETIREMENT (future) -->
+  <div class="panel" data-panel="retire">
+     <div class="card">
       <h2>Career timeline</h2>
       <p class="note">Stages of your working life &mdash; e.g. rest of military career, then second career. Check "Retire" on the stage where contributions stop for good; the model derives your full-retirement age and year (contribution amounts live on each account above).</p>
       <div class="grid3">
@@ -233,7 +242,6 @@
       <div class="warn" id="ladderWarn"></div>
       <div class="chartbox tall" style="margin-top:16px"><canvas id="ladderChart"></canvas></div>
     </div>
-
     <div class="card">
       <h2>Income streams</h2>
       <p class="note">Annual amounts are your best-judgment estimates (retiree pay calculator, VA rating tables, SSA statement). Military pension and VA disability start the day you take off the uniform &mdash; typically your 20-year mark, long before you stop working &mdash; and the model counts every year of them, including your second-career "bridge" years. Claim ages for Social Security are each person's <em>own</em> age. Amounts are held flat (no COLA) and pre-tax/tax-free distinctions are yours to reflect in the amounts.</p>
@@ -248,10 +256,6 @@
       </div>
       <div class="warn" id="milWarn"></div>
     </div>
-  </div>
-
-  <!-- 3. RETIREMENT (future) -->
-  <div class="panel" data-panel="retire">
     <div class="card">
       <h2>Drawdown model</h2>
       <p class="note">Your nest egg keeps compounding while you withdraw a fixed percentage yearly. Your military pension and VA pay have been flowing since your 20-year mark and continue for life; each person's Social Security switches on at their own claim age.</p>
@@ -273,9 +277,19 @@
     </div>
   </div>
 
+  <!-- NEW PANEL: Admin -->
+  <div class="panel" data-panel="admin">
+    <div class="card">
+      <h2>Household</h2>
+      <p class="note">Ages entered here drive everything downstream: retirement year, Social Security timing for each of you, and the family timeline. This is the only place ages live.</p>
+      <div class="scroll"><table class="tbl" id="familyTable"></table></div>
+      <button class="add" onclick="addPerson()">+ Add family member</button>
+    </div>
+  </div>
+
   <!-- SANDBOX: HEAD START (child accounts, standalone) -->
   <div class="panel" data-panel="head">
-    <div class="card hs-lock" style="background:var(--ink);border-color:var(--ink);color:#fff" id="hs_summary"></div>
+    <div class="card hs-lock" style="background:var(--ink);border-color:var(--ink);color:var(--card)" id="hs_summary"></div>
     <div class="card"><h2>Growth by account</h2><p class="note">Stacked balances from the child's age today to 65. Dashed line marks the target age.</p>
       <div class="chartbox tall"><canvas id="hs_chart"></canvas></div></div>
     <div class="card">
@@ -287,7 +301,7 @@
           <div id="hs_openwrap">
             <div class="field"><div class="slabel"><span>Child's age when the 529 was opened</span><b id="hs_open_o"></b></div>
               <input type="range" id="hs_open" min="0" max="11" step="1"></div>
-            <p class="note" id="hs_elig" style="color:#7F77DD;font-weight:600"></p>
+            <p class="note" id="hs_elig" style="color:var(--ink2);font-weight:600"></p>
           </div>
         </div>
       </div>
@@ -364,71 +378,89 @@ const pct = f => ((+f||0)*100).toFixed(1)+'%';
 function FV(rate,nper,pmt,pv=0,type=0){ if(rate===0) return -(pv+pmt*nper); return -(pv*Math.pow(1+rate,nper)+pmt*(1+rate*type)*(Math.pow(1+rate,nper)-1)/rate); }
 const CURRENT_YEAR = new Date().getFullYear();
 const SCHEMA_VERSION = 6;
+const THEME_KEY = 'financial-workbook-theme';
 
 const TAGS={S:{c:'var(--save)',n:'Savings / Invest'},N:{c:'var(--need)',n:'Needs'},W:{c:'var(--want)',n:'Wants'},D:{c:'var(--debt)',n:'Debt'}};
 const TAG_ORDER=['S','N','W','D','O'];
 const TAGS_ALL={...TAGS,O:{c:'var(--unc)',n:'Uncommitted'}};
 const PURP=['Retirement','Brokerage','Disposable'];
 
+function applyTheme(theme){
+  const isDark = theme === 'dark';
+  document.body.classList.toggle('dark', isDark);
+  const toggle = document.getElementById('themeToggle');
+  if(toggle){
+    toggle.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+    toggle.setAttribute('aria-pressed', String(isDark));
+  }
+}
+
+function toggleTheme(){
+  const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY, nextTheme);
+  applyTheme(nextTheme);
+}
+
+function initTheme(){
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+}
+
+const themeToggle = document.getElementById('themeToggle');
+if(themeToggle){ themeToggle.addEventListener('click', toggleTheme); }
+initTheme();
+
 /* ============ default state ============ */
 function defaults(){return{
   schemaVersion:SCHEMA_VERSION,
   name:"My Financial Workbook", tab:"budget",
-  ui:{ budgetGroup:"tag", acctGroup:"none" },
-  people:{ meAge:34, spouseAge:29, hasSpouse:true, others:[ {name:"Child 1",age:8}, {name:"Child 2",age:5}, {name:"Child 3",age:-1} ] },
+  ui:{ budgetGroup:"tag", acctGroup:"purpose" },
+  people:{ meAge:42, spouseAge:37, hasSpouse:true, others:[ {name:"Child 1",age:8}, {name:"Child 2",age:5}, {name:"Child 3",age:2} ] },
   budget:{ incomeMonthly:7500, items:[
     {broad:"Investment",sub:"TSP",tag:"S",monthly:833,acctId:"a6"},
-    {broad:"Investment",sub:"Mortgages (RE)",tag:"S",monthly:1042},
     {broad:"Investment",sub:"My Roth IRA",tag:"S",monthly:583,acctId:"a5"},
-    {broad:"Investment",sub:"Spouse Roth IRA",tag:"S",monthly:250,acctId:"a1"},
     {broad:"Requirement",sub:"Food",tag:"N",monthly:333},
-    {broad:"Investment",sub:"Short-term savings",tag:"S",monthly:208,acctId:"a4"},
-    {broad:"Debt",sub:"Cow Loan",tag:"D",monthly:625},
+    {broad:"Debt",sub:"Motorcycle Loan",tag:"D",monthly:625},
+    {broad:"Debt",sub:"Student loan",tag:"D",monthly:625},
     {broad:"Discretionary",sub:"Personal",tag:"W",monthly:125},
-    {broad:"Discretionary",sub:"Travel",tag:"W",monthly:83},
-    {broad:"Requirement",sub:"Transport / Mx",tag:"N",monthly:63},
     {broad:"Discretionary",sub:"Entertainment",tag:"W",monthly:63},
-    {broad:"Requirement",sub:"Gas",tag:"N",monthly:125},
-    {broad:"Discretionary",sub:"Christmas",tag:"W",monthly:83},
-    {broad:"Discretionary",sub:"Dining",tag:"W",monthly:83},
     {broad:"Requirement",sub:"Insurance",tag:"N",monthly:104},
-    {broad:"Service",sub:"Cell phone",tag:"N",monthly:42},
-    {broad:"Requirement",sub:"Clothing",tag:"N",monthly:42},
-    {broad:"Requirement",sub:"Work",tag:"N",monthly:63},
-    {broad:"Requirement",sub:"Internet",tag:"N",monthly:42},
-    {broad:"Discretionary",sub:"Gifts",tag:"W",monthly:21},
-    {broad:"Requirement",sub:"Hair cuts",tag:"N",monthly:42},
-    {broad:"Investment",sub:"Index funds",tag:"S",monthly:33,acctId:"a7"},
-    {broad:"Discretionary",sub:"Streaming",tag:"W",monthly:21},
-    {broad:"Discretionary",sub:"Amazon",tag:"W",monthly:21},
-    {broad:"Discretionary",sub:"Subscriptions",tag:"W",monthly:18},
-    {broad:"Service",sub:"VPN",tag:"N",monthly:8},
+    
   ]},
   base:{
     accounts:[
-      {id:"a1",owner:"Spouse",type:"Roth IRA",amount:100,rate:0.09,contribYr:0,matchYr:0,purpose:"Retirement"},
-      {id:"a2",owner:"Spouse",type:"Bank acct",amount:500,rate:0.005,contribYr:0,matchYr:0,purpose:"Disposable"},
-      {id:"a3",owner:"Spouse",type:"Fidelity",amount:250,rate:0.07,contribYr:0,matchYr:0,purpose:"Brokerage"},
-      {id:"a4",owner:"Joint",type:"Joint checking/savings",amount:7500,rate:0.005,contribYr:0,matchYr:0,purpose:"Disposable"},
-      {id:"a5",owner:"Me",type:"Roth IRA",amount:25000,rate:0.09,contribYr:0,matchYr:0,purpose:"Retirement"},
-      {id:"a6",owner:"Me",type:"Roth TSP",amount:30000,rate:0.09,contribYr:0,matchYr:5000,purpose:"Retirement"},
-      {id:"a7",owner:"Me",type:"Vanguard index",amount:8000,rate:0.07,contribYr:0,matchYr:0,purpose:"Brokerage"},
-      {id:"a8",owner:"Me",type:"Bank acct",amount:4000,rate:0.005,contribYr:0,matchYr:0,purpose:"Disposable"},
-      {id:"a9",owner:"Child",type:"Index fund",amount:200,rate:0.07,contribYr:0,matchYr:0,purpose:"Brokerage"},
+      {id:"a1",owner:"Spouse",type:"Roth IRA",amount:150000,rate:0.07,contribYr:0,matchYr:0,purpose:"Retirement"},
+      {id:"a2",owner:"Spouse",type:"Bank acct",amount:500,rate:0.01,contribYr:0,matchYr:0,purpose:"Disposable"},
+      {id:"a3",owner:"Me",type:"Fidelity",amount:15000,rate:0.07,contribYr:0,matchYr:0,purpose:"Brokerage"},
+      {id:"a4",owner:"Joint",type:"Joint checking/savings",amount:7500,rate:0.01,contribYr:0,matchYr:0,purpose:"Disposable"},
+      {id:"a5",owner:"Me",type:"Roth IRA",amount:250000,rate:0.07,contribYr:0,matchYr:0,purpose:"Retirement"},
+      {id:"a6",owner:"Me",type:"TSP",amount:500000,rate:0.07,contribYr:0,matchYr:0,purpose:"Retirement"},
     ],
-    realEstate:[{name:"House 1",value:150000,mortgageMo:1042,rentMo:1500}],
-    debts:[{name:"House 1 mortgage",amount:120000},{name:"Student loans",amount:5000}],
+    realEstate:[
+      {name:"House 1",value:200000,mortgageMo:1000,rentMo:1500},
+      {name:"House 2",value:300000,mortgageMo:2250,rentMo:2500},
+      {name:"House 3",value:400000,mortgageMo:1000,rentMo:0},
+    ],
+    debts:[
+      {name:"House 1 mortgage",amount:95000},
+      {name:"House 2 mortgage",amount:100000},
+      {name:"House 3 mortgage",amount:250000},
+      {name:"Student loans",amount:25000},
+      ],
     ladder:[
-      {label:"Military career to 20 yrs",years:8,retire:false},
-      {label:"Second career",years:12,retire:true},
+      {label:"Military career to 20 yrs",years:8,retire:false,growth:7},
+      {label:"Second career",years:10,retire:true,growth:7},
+      {label:"Idle growth", years:10,retire:false,growth:5}
     ],
-    income:{ milRetAge:42, milRet:60000, vaPay:24000, ssMe:40000, ssSpouse:25000, rentalInclude:true },
+    income:{ milRetAge:42, milRet:80000, vaPay:5000, ssMe:24000, ssSpouse:24000, rentalInclude:true },
   },
-  retire:{ planThroughAge:100, postReturn:0.09, withdrawalRate:0.04, ssMeClaimAge:67, ssSpClaimAge:67 },
-  tvm:{ startBalance:36000, annualReturn:0.09, annualInvest:10000, startYear:CURRENT_YEAR, years:35 },
+  retire:{ planThroughAge:100, postReturn:0.07, withdrawalRate:0.035, ssMeClaimAge:67, ssSpClaimAge:67 },
+  tvm:{ startBalance:10000, annualReturn:0.07, annualInvest:10000, startYear:CURRENT_YEAR, years:40 },
   habits:{ daily:1, years:30, rate:0.07 },
   headstart:{
-    childAge:11, targetAge:25, rolloverOn:true, openedAtAge:0,
+    childAge:8, targetAge:25, rolloverOn:true, openedAtAge:0,
     personal:{ start:25000, rate:7, sched:{11:{c:2000},12:{c:2000},13:{c:2000},14:{c:2000},15:{c:2000},16:{c:2000},17:{c:2000},18:{c:2000}} },
     plan529:{ start:10000, rate:6, sched:{11:{c:20000}} },
     trump:{ start:0, seed:0, rate:7, sched:{} },
@@ -439,6 +471,16 @@ function defaults(){return{
 
 let state = defaults();
 const charts={};
+let recomputeTimer=null;
+
+function scheduleRecompute(delay=80){
+  if(recomputeTimer) clearTimeout(recomputeTimer);
+  recomputeTimer=setTimeout(()=>{ recomputeTimer=null; recompute(); }, delay);
+}
+function flushRecompute(){
+  if(recomputeTimer){ clearTimeout(recomputeTimer); recomputeTimer=null; }
+  recompute();
+}
 
 /* ============ typed input layer (fixes the string-concatenation bug class) ============ */
 function setRaw(path,val){ const p=path.split('.'); let o=state; for(let i=0;i<p.length-1;i++)o=o[p[i]]; o[p[p.length-1]]=val; }
@@ -447,7 +489,26 @@ function onNum(path,val,min,max){
   if(!isFinite(n)) n=(min!=null&&min>0)?min:0;
   if(min!=null) n=Math.max(min,n);
   if(max!=null) n=Math.min(max,n);
-  setRaw(path,n); recompute();
+  setRaw(path,n); scheduleRecompute();
+}
+function onNumLive(path, val, min, max){
+  if(val === '' || val === null || val === undefined){
+    setRaw(path, 0);
+    scheduleRecompute();
+    return;
+  }
+  const n = parseFloat(val);
+  if(!isFinite(n)) return;
+  const bounded = Math.max(min!=null?min:0, Math.min(max!=null?max:Infinity, n));
+  setRaw(path, bounded);
+  scheduleRecompute();
+}
+function onNumCommit(path,val,min,max){
+  let n=parseFloat(val);
+  if(!isFinite(n)) n=(min!=null&&min>0)?min:0;
+  if(min!=null) n=Math.max(min,n);
+  if(max!=null) n=Math.min(max,n);
+  setRaw(path,n); flushRecompute();
 }
 function onStr(path,val){ setRaw(path,String(val)); recompute(); }
 function onBool(path,val){ setRaw(path,!!val); recompute(); }
@@ -488,22 +549,40 @@ function computeBase(){
   // budget-linked contributions: a Savings line item linked to an account drives that account's yearly contribution
   const linkSum={}, hasLink={};
   state.budget.items.forEach(it=>{ if(it.acctId){ hasLink[it.acctId]=true; linkSum[it.acctId]=(linkSum[it.acctId]||0)+Math.abs(num(it.monthly))*12; } });
-  const acctEff=b.accounts.map(a=> hasLink[a.id] ? (linkSum[a.id]||0) : Math.max(0,num(a.contribYr)));
+  const retireStageIndex = stages.findIndex(st=>st.retire);
+  const activeStages = retireStageIndex===-1 ? stages : stages.slice(0, retireStageIndex+1);
+  const acctEff=b.accounts.map(a=>{
+    const stageContribs=activeStages.map(st=>st.retContrib?.[a.id]).filter(v=>v!==undefined && v!==null).map(v=>Math.max(0,num(v)));
+    if(stageContribs.length>0) return stageContribs[stageContribs.length-1];
+    if(hasLink[a.id]) return linkSum[a.id]||0;
+    return Math.max(0,num(a.contribYr));
+  });
   const acctLinked=b.accounts.map(a=>!!hasLink[a.id]);
-  // per-account projection to retirement
+  // per-account projection to retirement using stage-specific contributions when provided
   const acctProj=b.accounts.map((a,i)=>{
-    const flow=acctEff[i]+Math.max(0,num(a.matchYr));
-    return -FV(num(a.rate)/12, yearsToRetire*12, flow/12, num(a.amount));
+    let bal=num(a.amount);
+    activeStages.forEach(st=>{
+      const yrs=Math.max(0,num(st.years));
+      if(yrs<=0) return;
+      const stageContrib = st.retContrib && st.retContrib[a.id] !== undefined ? Math.max(0,num(st.retContrib[a.id])) : null;
+      const flow = stageContrib !== null ? stageContrib : (hasLink[a.id] ? linkSum[a.id] : Math.max(0,num(a.contribYr)));
+      const annualRate = st.growth !== undefined ? num(st.growth)/100 : num(a.rate);
+      const rateMonthly = annualRate/12;
+      bal = FV(rateMonthly, yrs*12, -flow/12, -bal);
+    });
+    return bal;
   });
   const nest=b.accounts.reduce((s,a,i)=>s+(a.purpose==='Retirement'?acctProj[i]:0),0);
   const seed=b.accounts.filter(a=>a.purpose==='Retirement').reduce((s,a)=>s+num(a.amount),0);
   const contribTotal=b.accounts.reduce((s,a,i)=>s+acctEff[i]+Math.max(0,num(a.matchYr)),0);
   const retContribTotal=b.accounts.reduce((s,a,i)=>s+(a.purpose==='Retirement'?acctEff[i]+Math.max(0,num(a.matchYr)):0),0);
   // rental: derived from properties
-  const rentalNetMo=b.realEstate.reduce((s,p)=>s+num(p.rentMo)-num(p.mortgageMo),0);
+  const rentalGrossMo=b.realEstate.reduce((s,p)=>s+Math.max(0,num(p.rentMo)),0);
+  const rentalMortgageMo=b.realEstate.reduce((s,p)=>s+(num(p.rentMo)>0?num(p.mortgageMo):0),0);
+  const rentalNetMo=rentalGrossMo-rentalMortgageMo;
   const rentalAnnual=rentalNetMo*12;
   return {acctTotal,reTotal,debtTotal:-debtTotal,assets,netWorth,seed,stages,acctProj,acctEff,acctLinked,nest,contribTotal,retContribTotal,
-    hasRetireStage,yearsToRetire,retireAge,retireYear,rentalNetMo,rentalAnnual,
+    hasRetireStage,yearsToRetire,retireAge,retireYear,rentalGrossMo,rentalNetMo,rentalAnnual,
     spouseAgeAtRetire: retireAge-P.gap,
     da: assets? -debtTotal/assets:0, dnw: netWorth? -debtTotal/netWorth:0};
 }
@@ -568,7 +647,20 @@ function computeHabits(){
 }
 
 /* ============ Head Start planner (standalone) ============ */
-const HS_C={roth:'#1D9E75',k401:'#378ADD',personal:'#BA7517',plan529:'#7F77DD',trump:'#C24D51'};
+const _THEME_ROOT = getComputedStyle(document.documentElement);
+const THEME = {
+  ink: _THEME_ROOT.getPropertyValue('--ink').trim(),
+  ink2: _THEME_ROOT.getPropertyValue('--ink2').trim(),
+  save: _THEME_ROOT.getPropertyValue('--save').trim(),
+  need: _THEME_ROOT.getPropertyValue('--need').trim(),
+  want: _THEME_ROOT.getPropertyValue('--want').trim(),
+  debt: _THEME_ROOT.getPropertyValue('--debt').trim(),
+  unc: _THEME_ROOT.getPropertyValue('--unc').trim(),
+  muted: _THEME_ROOT.getPropertyValue('--muted').trim(),
+  text: _THEME_ROOT.getPropertyValue('--text').trim(),
+  card: _THEME_ROOT.getPropertyValue('--card').trim()
+};
+const HS_C={roth:THEME.save,k401:THEME.need,personal:THEME.want,plan529:THEME.ink2,trump:THEME.debt};
 const HS_END=65, HS_IRA=7500, HS_TRUMP=5000;
 function computeHead(){
   const H=state.headstart;
@@ -613,7 +705,7 @@ function setC(key,v){ const e=document.querySelector(`[data-c="${key}"]`); if(e)
 function setWarn(id,msg){ const e=document.getElementById(id); if(!e)return; e.classList.toggle('show',!!msg); e.innerHTML=msg||''; }
 
 /* ============ tabs (chronological + sandbox group) ============ */
-const TAB_MAIN=[['budget','Budget','1'],['base','Net worth','2'],['retire','Retirement','3']];
+const TAB_MAIN=[['budget','Budget','1'],['base','Net worth','2'],['retire','Retirement','3'],['admin','Admin','4']];
 const TAB_SANDBOX=[['head',"Child's Financial Planning"],['tvm','Growth'],['habits','Habits']];
 function renderTabs(){
   const t=document.getElementById('tabs'); t.innerHTML='';
@@ -633,6 +725,7 @@ function buildTab(){
   if(state.tab==='budget') buildBudgetRows();
   else if(state.tab==='head') buildHead();
   else if(state.tab==='base'){ buildFamily(); buildAcct(); buildRE(); buildDebt(); buildLadder(); }
+  else if(state.tab==='admin'){ buildFamily(); }
 }
 
 /* ============ sorting & grouping ============ */
@@ -696,12 +789,7 @@ function budgetRow(tb,it,i,regroup){
   tr.appendChild(cellStr(`budget.items.${i}.broad`,it.broad, state.ui.budgetGroup==='broad'?regroup:null));
   tr.appendChild(cellStr(`budget.items.${i}.sub`,it.sub));
   tr.appendChild(cellSelect(`budget.items.${i}.tag`,it.tag,Object.keys(TAGS),k=>TAGS[k].n, state.ui.budgetGroup==='tag'?regroup:null));
-  const ltd=el('<td class="cell"></td>');
-  const lsel=el('<select></select>');
-  lsel.appendChild(el('<option value="">&mdash;</option>'));
-  state.base.accounts.forEach(a=>lsel.appendChild(el(`<option value="${a.id}" ${it.acctId===a.id?'selected':''}>${acctLabel(a).replace(/</g,'&lt;')}</option>`)));
-  lsel.onchange=()=>{ state.budget.items[i].acctId=lsel.value||undefined; recompute(); };
-  ltd.appendChild(lsel); tr.appendChild(ltd);
+  
   const mtd=el('<td class="cell num"></td>'), ptd=el('<td class="cell num"></td>');
   const inc0=num(state.budget.incomeMonthly);
   const mInp=el(`<input type="number" step="any" value="${num(it.monthly)}">`);
@@ -726,7 +814,7 @@ function buildBudgetRows(){
   hr.appendChild(thSort('Broad category','budget.items','broad',false,buildBudgetRows));
   hr.appendChild(thSort('Sub-category','budget.items','sub',false,buildBudgetRows));
   hr.appendChild(thSort('Type','budget.items','tag',false,buildBudgetRows));
-  hr.appendChild(el('<th title="Linked account receives this item as its yearly contribution">&rarr; Account</th>'));
+  
   hr.appendChild(thSort('Monthly $','budget.items','monthly',true,buildBudgetRows,true));
   hr.appendChild(thSort('% income','budget.items','monthly',true,buildBudgetRows,true));
   hr.appendChild(thSort('Annual $','budget.items','monthly',true,buildBudgetRows,true));
@@ -739,7 +827,7 @@ function buildBudgetRows(){
   }else{
     groupBuckets(state.budget.items,g).forEach((bk,gi)=>{
       const label = g==='tag' ? (TAGS[bk.key]?TAGS[bk.key].n:bk.key) : bk.key;
-      tb.appendChild(el(`<tr class="grp"><td colspan="4"><span class="gname">${label.replace(/</g,'&lt;')}</span></td><td class="num" data-c="bsub-${gi}-mon"></td><td class="num" data-c="bsub-${gi}-pct"></td><td class="num" data-c="bsub-${gi}-ann"></td><td></td></tr>`));
+      tb.appendChild(el(`<tr class="grp"><td colspan="3"><span class="gname">${label.replace(/</g,'&lt;')}</span></td><td class="num" data-c="bsub-${gi}-mon"></td><td class="num" data-c="bsub-${gi}-pct"></td><td class="num" data-c="bsub-${gi}-ann"></td><td></td></tr>`));
       bk.idxs.forEach(i=>budgetRow(tb,state.budget.items[i],i,regroup));
     });
   }
@@ -824,17 +912,8 @@ function acctRow(tb,a,i,regroup){
   tr.appendChild(cellStr(`base.accounts.${i}.owner`,a.owner, state.ui.acctGroup==='owner'?regroup:null));
   tr.appendChild(cellStr(`base.accounts.${i}.type`,a.type));
   tr.appendChild(cellNum(`base.accounts.${i}.amount`,a.amount,-1e9,1e9));
-  // growth % entered as percent (e.g. 9 = 9%)
-  const td=el('<td class="cell num"></td>');
-  const inp=el(`<input type="number" step="any" value="${+(num(a.rate)*100).toFixed(2)}">`);
-  inp.oninput=()=>{ let v=parseFloat(inp.value); if(!isFinite(v))v=0; v=Math.max(0,Math.min(v,25)); state.base.accounts[i].rate=v/100; recompute(); };
-  td.appendChild(inp); tr.appendChild(td);
-  const cbb=computeBase();
-  if(cbb.acctLinked[i]) tr.appendChild(el(`<td class="num comp" data-c="a-you-${i}"></td>`));
-  else tr.appendChild(cellNum(`base.accounts.${i}.contribYr`,a.contribYr,0,1e7));
-  tr.appendChild(cellNum(`base.accounts.${i}.matchYr`,a.matchYr,0,1e7));
   tr.appendChild(cellSelect(`base.accounts.${i}.purpose`,a.purpose,PURP,null, state.ui.acctGroup==='purpose'?regroup:null));
-  tr.appendChild(el(`<td class="num comp" data-c="a-proj-${i}"></td>`));
+  
   tr.appendChild(delCell(()=>{state.base.accounts.splice(i,1);buildAcct();recompute();}));
   tb.appendChild(tr);
 }
@@ -847,11 +926,8 @@ function buildAcct(){
   hr.appendChild(thSort('Owner','base.accounts','owner',false,buildAcct));
   hr.appendChild(thSort('Type','base.accounts','type',false,buildAcct));
   hr.appendChild(thSort('Amount $','base.accounts','amount',true,buildAcct,true));
-  hr.appendChild(thSort('Growth %','base.accounts','rate',true,buildAcct,true));
-  hr.appendChild(thSort('You $/yr','base.accounts','contribYr',true,buildAcct,true));
-  hr.appendChild(thSort('Match $/yr','base.accounts','matchYr',true,buildAcct,true));
   hr.appendChild(thSort('Purpose','base.accounts','purpose',false,buildAcct));
-  hr.appendChild(el('<th class="r">At retirement</th>'));
+  
   hr.appendChild(el('<th></th>'));
   t.appendChild(thead);
   const tb=el('<tbody></tbody>');
@@ -860,7 +936,7 @@ function buildAcct(){
     state.base.accounts.forEach((a,i)=>acctRow(tb,a,i,regroup));
   }else{
     groupBuckets(state.base.accounts,g).forEach((bk,gi)=>{
-      tb.appendChild(el(`<tr class="grp"><td colspan="2"><span class="gname">${bk.key.replace(/</g,'&lt;')}</span></td><td class="num" data-c="asub-${gi}-amt"></td><td></td><td></td><td></td><td></td><td class="num" data-c="asub-${gi}-proj"></td><td></td></tr>`));
+      tb.appendChild(el(`<tr class="grp"><td colspan="2"><span class="gname">${bk.key.replace(/</g,'&lt;')}</span></td><td class="num" data-c="asub-${gi}-amt"></td><td></td><td></td></tr>`));
       bk.idxs.forEach(i=>acctRow(tb,state.base.accounts[i],i,regroup));
     });
   }
@@ -906,20 +982,49 @@ function buildDebt(){
 }
 function buildLadder(){
   const t=document.getElementById('ladderTable'); if(!t)return;
-  t.innerHTML=`<thead><tr><th>Stage</th><th class="r">Years</th><th class="r">Ends at (age / year)</th><th>Retire?</th><th></th></tr></thead>`;
+  const retirementAccounts = state.base.accounts.map((a,i)=>({a,i})).filter(x=>x.a.purpose==='Retirement');
+  const headers = ['<th>Stage</th>', '<th class="r">Years</th>', '<th class="r">Ends at (age / year)</th>', '<th class="r">Growth %</th>', '<th>Retire?</th>'];
+  retirementAccounts.forEach(x=>{
+    const label = `${x.a.owner?x.a.owner+' ':''}${x.a.type||'Retirement'}`.trim();
+    headers.push(`<th class="r">${label}</th>`);
+  });
+  headers.push('<th></th>');
+  t.innerHTML=`<thead><tr>${headers.join('')}</tr></thead>`;
   const tb=el('<tbody></tbody>');
+  const retireIndex = state.base.ladder.findIndex(st=>st.retire);
   state.base.ladder.forEach((s,i)=>{
+    if(!s.retContrib) s.retContrib={};
     const tr=el(`<tr class="${s.retire?'retire-row':''}"></tr>`);
     tr.appendChild(cellStr(`base.ladder.${i}.label`,s.label));
     tr.appendChild(cellNum(`base.ladder.${i}.years`,s.years,0,80));
     tr.appendChild(el(`<td class="num comp" data-c="l-ends-${i}"></td>`));
+    tr.appendChild(cellNum(`base.ladder.${i}.growth`,s.growth,0,100));
     const rc=el('<td></td>'); const cb=el(`<input type="checkbox" ${s.retire?'checked':''} style="accent-color:var(--ink);width:15px;height:15px">`);
     cb.onchange=()=>{ state.base.ladder.forEach((x,j)=>x.retire=(j===i)&&cb.checked); buildLadder(); buildFamily(); recompute(); };
     rc.appendChild(cb); tr.appendChild(rc);
+    const active = retireIndex === -1 || i <= retireIndex;
+    retirementAccounts.forEach(x=>{
+      const field=`base.ladder.${i}.retContrib.${x.a.id}`;
+      const td=cellNum(field, s.retContrib[x.a.id] ?? num(x.a.contribYr), 0, 1e8);
+      if(!active){ td.querySelector('input').disabled=true; }
+      tr.appendChild(td);
+    });
     tr.appendChild(delCell(()=>{state.base.ladder.splice(i,1);buildLadder();buildFamily();recompute();}));
     tb.appendChild(tr);
   });
   t.appendChild(tb);
+  // ensure the ladder chart always refreshes after ladder UI changes
+  try{ drawLadderChart(); }catch(e){/* ignore if chart not ready */}
+}
+function drawLadderChart(){
+  const c = computeBase();
+  const retirementAccounts = state.base.accounts.map((a,i)=>({a,i})).filter(x=>x.a.purpose==='Retirement');
+  drawBar('ladderChart',
+    retirementAccounts.map(x=>x.a.type||x.a.owner),
+    retirementAccounts.map(x=>c.acctProj[x.i]),
+    retirementAccounts.map(()=>THEME.ink),
+    v=>moneyK(v)
+  );
 }
 function updateBase(){
   const c=computeBase(), P=computePeople();
@@ -932,15 +1037,15 @@ function updateBase(){
   setVal('i_ssme',num(inc.ssMe)); setVal('i_sssp',num(inc.ssSpouse));
   const sspF=document.getElementById('f_sssp'); if(sspF) sspF.style.display=P.hasSpouse?'':'none';
   setVal('i_rent', money(c.rentalAnnual)+'/yr');
-  setTxt('re_net', money(c.rentalNetMo)+'/mo');
+  setTxt('re_net', money(c.rentalGrossMo)+'/mo');
   state.base.realEstate.forEach((p,i)=>setC(`re-net-${i}`, money(num(p.rentMo)-num(p.mortgageMo))));
   const rc=document.getElementById('i_rentinc'); if(rc) rc.checked=!!inc.rentalInclude;
+  setTxt('re_net_copy', money(c.rentalNetMo)+'/mo');
   const milAge=num(inc.milRetAge);
   setWarn('milWarn',
     milAge<P.meAge ? `Military retirement age (${milAge}) is in the past   pension and VA are treated as already flowing.` :
     (c.hasRetireStage && milAge>c.retireAge) ? `Military retirement age (${milAge}) is after your full-retirement age (${c.retireAge})   pension and VA start mid-drawdown. Double-check the timeline years.` : '');
-  state.base.accounts.forEach((a,i)=>{ setC(`a-proj-${i}`, money(c.acctProj[i]));
-    if(c.acctLinked[i]) setC(`a-you-${i}`, money(c.acctEff[i])+' <span class="derived" style="margin-left:4px">budget</span>'); });
+  state.base.accounts.forEach((a,i)=>{ setC(`a-proj-${i}`, money(c.acctProj[i])); });
   if(state.ui.acctGroup!=='none'){
     groupBuckets(state.base.accounts,state.ui.acctGroup).forEach((bk,gi)=>{
       const amt=bk.idxs.reduce((s,i)=>s+num(state.base.accounts[i].amount),0);
@@ -959,16 +1064,30 @@ function updateBase(){
   if(!c.hasRetireStage) ladderMsg='No stage is marked "Retire"   the model is assuming you retire at the end of the last stage. Check the Retire box on the stage where contributions stop.';
   else{
     const ri=c.stages.findIndex(x=>x.retire);
-    if(ri>-1 && ri<c.stages.length-1) ladderMsg='Stages after the Retire stage are hypothetical "if untouched" growth only   they don\'t feed the nest egg or the plan. Actual post-retirement drawdown happens on the Retirement tab.';
+    if(ri>-1 && ri<c.stages.length-1) ladderMsg='Stages after the Retire stage are hypothetical "if untouched" growth only   they don\'t feed the nest egg or the plan. Actual post-retirement drawdown happens below.';
   }
   setWarn('ladderWarn', ladderMsg);
-  drawBar('ladderChart',state.base.accounts.map(a=>a.type||a.owner),c.acctProj,state.base.accounts.map(a=>a.purpose==='Retirement'?'#3B6EA5':'#9DB8AB'),v=>moneyK(v));
+  const retirementAccounts = state.base.accounts.map((a,i)=>({a,i})).filter(x=>x.a.purpose==='Retirement');
+  drawBar('ladderChart',
+    retirementAccounts.map(x=>x.a.type||x.a.owner),
+    retirementAccounts.map(x=>c.acctProj[x.i]),
+    retirementAccounts.map(()=>THEME.ink),
+    v=>moneyK(v)
+  );
 }
 
 /* ============ Retirement ============ */
 function updateRetire(){
   const R=state.retire;
   const c=computeRetire();
+  // populate income inputs (also done in Net worth view) so values show while on Retirement
+  try{
+    const inc=state.base.income;
+    setVal('i_milage',num(inc.milRetAge)); setVal('i_mil',num(inc.milRet)); setVal('i_va',num(inc.vaPay));
+    setVal('i_ssme',num(inc.ssMe)); setVal('i_sssp',num(inc.ssSpouse));
+    setVal('i_rent', money(computeBase().rentalAnnual) + '/yr');
+    const rc=document.getElementById('i_rentinc'); if(rc) rc.checked=!!inc.rentalInclude;
+  }catch(e){/* ignore if DOM not ready */}
   setVal('r_nest',money(c.nest));
   setVal('r_when',`Age ${c.base.retireAge}   year ${c.base.retireYear}`+(c.P.hasSpouse?` (spouse ${c.base.spouseAgeAtRetire})`:''));
   setVal('r_eage',num(R.planThroughAge));
@@ -1001,6 +1120,7 @@ function updateRetire(){
   const tb=el('<tbody></tbody>');
   c.rows.forEach(r=>tb.appendChild(el(`<tr><td class="mono">${r.myAge}</td>${hasSp?`<td class="mono comp">${r.spAge}</td>`:''}<td class="mono comp">${r.year}</td><td class="num">${money(r.balance)}</td><td class="num">${money(r.withdrawal)}</td><td class="num comp">${money(r.pen+r.va+r.ssMe+r.ssSp+r.rent)}</td><td class="num" style="font-weight:600">${money(r.income)}</td></tr>`)));
   t.appendChild(tb);
+  try{ drawLadderChart(); }catch(e){/* ignore if chart not ready */}
   drawRetChart('retChart',c.rows);
 }
 
@@ -1025,8 +1145,8 @@ function updateTVM(){
   rows.forEach(r=>body.appendChild(el(`<tr><td class="mono">${r.year}</td><td class="num">${money(r.balance)}</td><td class="num comp">${money(r.invested)}</td><td class="num comp">${pct(r.investedPct)}</td></tr>`)));
   tb.appendChild(body);
   drawArea('tvmChart',rows.map(r=>r.year),[
-    {label:'Contributed',data:rows.map(r=>r.invested),color:'#3B6EA5'},
-    {label:'Growth',data:rows.map(r=>r.growth),color:'#1D9E75'},
+    {label:'Contributed',data:rows.map(r=>r.invested),color:THEME.need},
+    {label:'Growth',data:rows.map(r=>r.growth),color:THEME.save},
   ],v=>moneyK(v));
 }
 
@@ -1039,7 +1159,7 @@ function updateHabits(){
   const {fv,pts}=computeHabits();
   setTxt('h_fv',money(fv));
   setTxt('h_caption',`A $${num(h.daily)}/day habit, invested at ${(num(h.rate)*100).toFixed(1)}% for ${num(h.years,1)} years, is worth ${money(fv)}.`);
-  drawLine('habitChart',pts.map(p=>p.year),[{label:'Value',data:pts.map(p=>p.val),color:'#C25B4E',fill:true}],v=>moneyK(v));
+  drawLine('habitChart',pts.map(p=>p.year),[{label:'Value',data:pts.map(p=>p.val),color:THEME.debt,fill:true}],v=>moneyK(v));
 }
 
 /* ============ Head Start UI ============ */
@@ -1048,7 +1168,7 @@ function hsSlider(host,label,get,set,min,max,step,fmt){
   const lab=el(`<div class="slabel"><span>${label}</span><b></b></div>`);
   const r=el(`<input type="range" min="${min}" max="${max}" step="${step}" value="${get()}">`);
   const paint=()=>lab.querySelector('b').textContent=fmt(get());
-  r.oninput=()=>{ set(parseFloat(r.value)); paint(); recompute(); };
+  r.oninput=()=>{ set(parseFloat(r.value)); paint(); scheduleRecompute(); };
   paint(); f.appendChild(lab); f.appendChild(r); host.appendChild(f);
 }
 function hsGridRow(host,acct,age,opts){
@@ -1058,12 +1178,12 @@ function hsGridRow(host,acct,age,opts){
   const c=el(`<input type="number" min="0" ${opts.cap?`max="${opts.cap}"`:''} placeholder="${opts.ph||'0'}" value="${e.c!=null?e.c:''}" ${opts.disabled?'disabled':''}>`);
   c.oninput=()=>{ const v=parseFloat(c.value); const t=state.headstart[acct].sched;
     if(!t[age])t[age]={}; if(isFinite(v)&&v>=0) t[age].c=opts.cap?Math.min(v,opts.cap):v; else delete t[age].c;
-    if(t[age].c==null&&t[age].r==null&&!opts.keep) delete t[age]; recompute(); };
+    if(t[age].c==null&&t[age].r==null&&!opts.keep) delete t[age]; scheduleRecompute(); };
   row.appendChild(c);
   const r=el(`<input type="number" min="0" max="20" step="0.5" placeholder="${opts.past?'':state.headstart[acct].rate}" value="${e.r!=null?e.r:''}" ${opts.past?'disabled':''}>`);
   r.oninput=()=>{ const v=parseFloat(r.value); const t=state.headstart[acct].sched;
     if(!t[age])t[age]={}; if(isFinite(v)&&v>=0) t[age].r=v; else delete t[age].r;
-    if(t[age].c==null&&t[age].r==null&&!opts.keep) delete t[age]; recompute(); };
+    if(t[age].c==null&&t[age].r==null&&!opts.keep) delete t[age]; scheduleRecompute(); };
   row.appendChild(r);
   if(opts.removable){ const x=el('<button class="del">&times;</button>'); x.onclick=()=>{ delete state.headstart[acct].sched[age]; buildHead(); recompute(); }; row.appendChild(x); }
   else row.appendChild(el('<span></span>'));
@@ -1079,15 +1199,15 @@ function buildHead(){
   // top controls
   const ageR=document.getElementById('hs_age');
   if(ageR){ ageR.value=ca; document.getElementById('hs_age_o').textContent=ca;
-    ageR.oninput=()=>{ H.childAge=parseFloat(ageR.value); if(num(H.targetAge)<=H.childAge) H.targetAge=H.childAge+1; buildHead(); recompute(); }; }
+    ageR.oninput=()=>{ H.childAge=parseFloat(ageR.value); if(num(H.targetAge)<=H.childAge) H.targetAge=H.childAge+1; buildHead(); scheduleRecompute(); }; }
   const roll=document.getElementById('hs_roll');
-  if(roll){ roll.checked=!!H.rolloverOn; roll.onchange=()=>{ H.rolloverOn=roll.checked; buildHead(); recompute(); };
+  if(roll){ roll.checked=!!H.rolloverOn; roll.onchange=()=>{ H.rolloverOn=roll.checked; buildHead(); scheduleRecompute(); };
     document.getElementById('hs_openwrap').style.display=H.rolloverOn?'':'none'; }
   const op=document.getElementById('hs_open');
   if(op){ op.max=Math.max(ca,1); op.value=num(H.openedAtAge);
     document.getElementById('hs_open_o').textContent=num(H.openedAtAge)===0?'At birth':num(H.openedAtAge);
     op.oninput=()=>{ H.openedAtAge=parseFloat(op.value);
-      document.getElementById('hs_open_o').textContent=H.openedAtAge===0?'At birth':H.openedAtAge; recompute(); }; }
+      document.getElementById('hs_open_o').textContent=H.openedAtAge===0?'At birth':H.openedAtAge; scheduleRecompute(); }; }
   // account cards
   host.innerHTML='';
   const sched=(acct,color,name,note,capPerYear,capUntilAge,seedLabel)=>{
@@ -1146,16 +1266,16 @@ function updateHead(){
     ['529 plan',c.atT.plan529,c.atT.i5,HS_C.plan529]];
   sum.innerHTML=`
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-bottom:18px">
-      <span style="color:#BFD4C8;font-size:13px">What your kid has at age <b class="mono" style="color:#fff">${c.targetAge}</b></span>
-      <div style="text-align:right;color:#BFD4C8;font-size:13px">Total at ${c.targetAge}: <b class="mono" style="color:#fff;font-size:17px">${moneyK(c.atT.total)}</b><br>
-      Total at 65: <b class="mono" style="color:#fff;font-size:17px">${moneyK(c.at65.total)}</b></div>
+      <span style="color:${THEME.save};font-size:13px">What your kid has at age <b class="mono" style="color:${THEME.card}">${c.targetAge}</b></span>
+      <div style="text-align:right;color:${THEME.save};font-size:13px">Total at ${c.targetAge}: <b class="mono" style="color:${THEME.card};font-size:17px">${moneyK(c.atT.total)}</b><br>
+      Total at 65: <b class="mono" style="color:${THEME.card};font-size:17px">${moneyK(c.at65.total)}</b></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px">
       ${stats.map(([k,v,inv,col])=>`<div class="hs-stat" style="border-color:${col}"><div class="k">${k}</div><div class="v">${moneyK(v)}</div><div class="sub">put in ${moneyK(inv)}${inv>0?`   ${(v/inv).toFixed(1)}  growth`:''}</div></div>`).join('')}
     </div>
     <div style="margin-top:18px">
-      <input type="range" id="hs_target" min="${c.childAge+1}" max="65" step="1" value="${c.targetAge}" style="accent-color:#fff">
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:#7FA491" class="mono"><span>${c.childAge+1}</span><span>Drag to change target age</span><span>65</span></div>
+      <input type="range" id="hs_target" min="${c.childAge+1}" max="65" step="1" value="${c.targetAge}" style="accent-color:${THEME.card}">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:${THEME.ink2}" class="mono"><span>${c.childAge+1}</span><span>Drag to change target age</span><span>65</span></div>
     </div>`;
   const tr=document.getElementById('hs_target');
   tr.oninput=()=>{ H.targetAge=parseFloat(tr.value); updateHead(); };
@@ -1168,13 +1288,13 @@ function drawHeadChart(id,c){
   charts[id]=new Chart(document.getElementById(id),{type:'line',
     data:{labels:c.rows.map(r=>r.age),datasets:[mk('roth','Roth IRA',HS_C.roth),mk('k401','401(k)',HS_C.k401),mk('trump','Trump Acct',HS_C.trump),mk('personal','Personal',HS_C.personal),mk('plan529','529',HS_C.plan529)]},
     options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-      plugins:{legend:{position:'bottom',labels:{font:{family:'Inter',size:11},color:'#2A2A26',boxWidth:10,boxHeight:10,padding:12}},
+      plugins:{legend:{position:'bottom',labels:{font:{family:'Inter',size:11},color:THEME.text,boxWidth:10,boxHeight:10,padding:12}},
         tooltip:{callbacks:{label:x=>' '+x.dataset.label+': '+money(x.raw),title:t=>'Age '+t[0].label}}},
       scales:{x:{...AX,grid:{display:false}},y:{stacked:true,...AX,ticks:{...AX.ticks,callback:v=>moneyK(v)}}}}});
 }
 
 /* ============ charts ============ */
-const AX={grid:{color:'rgba(140,133,120,.12)'},ticks:{color:'#8A8578',font:{family:'IBM Plex Mono',size:10}}};
+const AX={grid:{color:'rgba(140,133,120,.12)'},ticks:{color:THEME.muted,font:{family:'IBM Plex Mono',size:10}}};
 const chartsReady=()=>typeof Chart!=='undefined';
 function noChart(id){ const c=document.getElementById(id); if(c&&c.parentElement&&!c.parentElement.querySelector('.chartmsg')){ const m=el('<div class="chartmsg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center;padding:12px">Charts unavailable   the numbers above remain exact.</div>'); c.parentElement.style.position='relative'; c.parentElement.appendChild(m);} return false; }
 function destroy(id){ if(charts[id]){charts[id].destroy(); delete charts[id];} }
@@ -1187,15 +1307,43 @@ function drawArea(id,labels,series,yfmt){ if(!chartsReady())return noChart(id); 
 function drawLine(id,labels,series,yfmt){ if(!chartsReady())return noChart(id); destroy(id); charts[id]=new Chart(document.getElementById(id),{type:'line',
   data:{labels,datasets:series.map(s=>({label:s.label,data:s.data,borderColor:s.color,backgroundColor:s.color+'22',fill:s.fill,pointRadius:0,borderWidth:2,tension:.25}))},
   options:baseOpts(yfmt,false)}); }
-function drawBar(id,labels,data,colors,yfmt){ if(!chartsReady())return noChart(id); destroy(id); charts[id]=new Chart(document.getElementById(id),{type:'bar',
-  data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:6}]},options:baseOpts(yfmt,false)}); }
+function drawBar(id,labels,data,colors,yfmt){ if(!chartsReady())return noChart(id); destroy(id);
+  const plugins = [];
+  if(id==='ladderChart'){
+    plugins.push({
+      id:'barTotalLabels',
+      afterDatasetsDraw(chart){
+        const ctx = chart.ctx;
+        const meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '11px IBM Plex Mono';
+        meta.data.forEach((bar,index)=>{
+          const value = chart.data.datasets[0].data[index];
+          if(value===null||value===undefined||value===0) return;
+          const text = yfmt ? yfmt(value) : String(value);
+          const barTop = bar.y;
+          const barBottom = bar.base;
+          const height = Math.abs(barBottom - barTop);
+          const isSmall = height < 24;
+          const textY = isSmall ? Math.min(barTop - 10, barBottom + 10) : barTop + height/2;
+          ctx.fillStyle = isSmall ? '#333' : '#fff';
+          ctx.fillText(text, bar.x, textY);
+        });
+        ctx.restore();
+      }
+    });
+  }
+  charts[id]=new Chart(document.getElementById(id),{type:'bar',
+    data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:6}]},options:baseOpts(yfmt,false),plugins}); }
 function drawDoughnut(id,data,labels,colors){ if(!chartsReady())return noChart(id); destroy(id); charts[id]=new Chart(document.getElementById(id),{type:'doughnut',
   data:{labels,datasets:[{data:data.map(d=>(+d||0)*100),backgroundColor:colors,borderWidth:0}]},
   options:{responsive:true,maintainAspectRatio:false,cutout:'66%',plugins:{legend:{position:'bottom',labels:{font:{family:'Inter',size:12},color:'#2A2A26',boxWidth:10,boxHeight:10,padding:14}},tooltip:{callbacks:{label:c=>' '+c.label+': '+c.raw.toFixed(1)+'%'}}}}}); }
 function drawRetChart(id,rows){ if(!chartsReady())return noChart(id); destroy(id); charts[id]=new Chart(document.getElementById(id),{
   data:{labels:rows.map(r=>r.myAge),datasets:[
-    {type:'line',label:'Portfolio balance',data:rows.map(r=>r.balance),borderColor:'#123b2e',backgroundColor:'#123b2e18',fill:true,yAxisID:'y',pointRadius:0,borderWidth:2,tension:.25,order:2},
-    {type:'bar',label:'Annual income',data:rows.map(r=>r.income),backgroundColor:'#3B6EA5aa',yAxisID:'y1',order:1,borderRadius:3},
+    {type:'line',label:'Portfolio balance',data:rows.map(r=>r.balance),borderColor:THEME.ink,backgroundColor:THEME.ink+'18',fill:true,yAxisID:'y',pointRadius:0,borderWidth:2,tension:.25,order:2},
+    {type:'bar',label:'Annual income',data:rows.map(r=>r.income),backgroundColor:THEME.need+'aa',yAxisID:'y1',order:1,borderRadius:3},
   ]},
   options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{position:'bottom',labels:{font:{family:'Inter',size:11},color:'#2A2A26',boxWidth:10,boxHeight:10,padding:12}},
@@ -1276,8 +1424,11 @@ function migrate(st){
   if(!Array.isArray(st.base.ladder)) st.base.ladder=d.base.ladder;
   st.base.ladder.forEach(s=>{
     if(s.contribMe===undefined){ s.contribMe=num(s.contribution); s.contribSp=0; }
+    if(s.growth===undefined) s.growth=7;
+    if(s.retContrib===undefined) s.retContrib={};
     delete s.contribution;
-    s.years=num(s.years); s.contribMe=num(s.contribMe); s.contribSp=num(s.contribSp);
+    s.years=num(s.years); s.contribMe=num(s.contribMe); s.contribSp=num(s.contribSp); s.growth=num(s.growth);
+    Object.keys(s.retContrib||{}).forEach(k=>{ s.retContrib[k]=num(s.retContrib[k]); });
   });
   ['accounts','realEstate','debts'].forEach(k=>{ if(!Array.isArray(st.base[k])) st.base[k]=d.base[k]; });
   if(!st.base.income) st.base.income=d.base.income;
@@ -1314,7 +1465,7 @@ function migrate(st){
   delete st.base.income.component; delete st.base.income.pensionStartAge;
   if(!st.ui) st.ui={};
   if(!st.ui.budgetGroup) st.ui.budgetGroup='tag';
-  if(!st.ui.acctGroup) st.ui.acctGroup='none';
+  if(!st.ui.acctGroup) st.ui.acctGroup='purpose';
   // v<4: per-account engine
   const preR=num(st.base.preReturn,0.09); delete st.base.preReturn;
   st.base.accounts.forEach(a=>{
