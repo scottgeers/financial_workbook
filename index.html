@@ -28,10 +28,10 @@
   html,body{margin:0}
   body{background:var(--paper);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
   .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 24px 80px}
 
   header{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .htop{max-width:1120px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .htop{max-width:1440px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .brand{display:flex;align-items:baseline;gap:10px;flex:1;min-width:220px}
   .brand input{border:none;background:transparent;font:inherit;font-weight:700;color:var(--ink);font-size:16px;width:100%;max-width:340px}
   .brand input:focus{outline:none;border-bottom:1px solid var(--line)}
@@ -251,7 +251,7 @@
         <div class="field"><label>VA disability / yr ($, tax-free) &mdash; from that age, for life</label><input class="inp" type="number" id="i_va" oninput="onNum('base.income.vaPay',this.value,0,1e6)"></div>
         <div class="field"><label>Your Social Security / yr ($)</label><input class="inp" type="number" id="i_ssme" oninput="onNum('base.income.ssMe',this.value,0,1e6)"></div>
         <div class="field" id="f_sssp"><label>Spouse Social Security / yr ($)</label><input class="inp" type="number" id="i_sssp" oninput="onNum('base.income.ssSpouse',this.value,0,1e6)"></div>
-        <div class="field"><label>Rental income / yr <span class="derived">from real estate</span></label><input class="inp" id="i_rent" disabled>
+        <div class="field"><label>Net Rental income / yr <span class="derived">from real estate</span></label><input class="inp" id="i_rent" disabled>
           <label class="check" style="margin-top:8px"><input type="checkbox" id="i_rentinc" onchange="onBool('base.income.rentalInclude',this.checked)"> Include rental in retirement income</label></div>
       </div>
       <div class="warn" id="milWarn"></div>
